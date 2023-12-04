@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { data } from "./Data";
+import { FaArrowCircleLeft, FaArrowCircleRight } from "react-icons/fa";
+import { GoDot, GoDotFill } from "react-icons/go";
 
 const Slider = () => {
   const [activeImg, setActiveImg] = useState(0);
@@ -21,9 +23,12 @@ const Slider = () => {
   return (
     <div className="flex justify-center flex-col mx-auto items-center gap-4 mt-[4rem]">
       <h3 className="font-bold text-2xl text-orange-400">Slider</h3>
-      <div className="flex gap-4">
-        <button className="font-semibold text-green-500" onClick={prevHandler}>
-          Prev
+      <div className="flex gap-3">
+        <button
+          className="font-semibold text-green-500 text-2xl"
+          onClick={prevHandler}
+        >
+          <FaArrowCircleLeft />
         </button>
         {data.map((url, i) => (
           <img
@@ -35,9 +40,17 @@ const Slider = () => {
           />
         ))}
 
-        <button className="font-semibold text-green-500" onClick={nextHandler}>
-          Next
+        <button
+          className="font-semibold text-green-500 text-2xl"
+          onClick={nextHandler}
+        >
+          <FaArrowCircleRight />
         </button>
+      </div>
+      <div className="flex">
+        {data.map((dot, i) =>
+          activeImg === i ? <GoDotFill key={i} /> : <GoDot key={i} />
+        )}
       </div>
     </div>
   );
