@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { data } from "./Data";
 
 const Slider = () => {
@@ -10,6 +10,14 @@ const Slider = () => {
     setActiveImg((activeImg + 1) % data.length);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      nextHandler();
+    }, 4000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [activeImg]);
   return (
     <div className="flex justify-center flex-col mx-auto items-center gap-4 mt-[4rem]">
       <h3 className="font-bold text-2xl text-orange-400">Slider</h3>
