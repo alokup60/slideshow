@@ -17,7 +17,16 @@ const Slider = () => {
         <button className="font-semibold text-green-500" onClick={prevHandler}>
           Prev
         </button>
-        <img src={data[activeImg]} className="w-[600px] h-[350px] rounded-md" />
+        {data.map((url, i) => (
+          <img
+            key={url}
+            src={url}
+            className={`w-[600px] h-[350px] rounded-md + ${
+              activeImg === i ? "block" : "hidden"
+            }`}
+          />
+        ))}
+
         <button className="font-semibold text-green-500" onClick={nextHandler}>
           Next
         </button>
